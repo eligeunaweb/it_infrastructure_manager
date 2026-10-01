@@ -17,6 +17,7 @@
         "views/partner_views.xml",
         "views/menu.xml",
     ],
+    "images": ["static/description/banner.png"],
     "application": True,
     "installable": True,
     'support': 'soporte@eligeunaweb.com',
