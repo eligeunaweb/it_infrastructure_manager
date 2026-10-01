@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+{
+    "name": 'IT Infrastructure Manager',
+    "version": '15.0.1.0.0',
+    "summary": 'Manage servers, network interfaces and DNS infrastructure by customer',
+    "category": "Services/IT",
+    "author": 'Álvaro Martínez',
+    "website": 'https://eligeunaweb.es',
+    "license": 'LGPL-3',
+    "depends": ["contacts", "mail"],
+    "data": [
+        "security/security.xml",
+        "security/ir.model.access.csv",
+        "views/server_views.xml",
+        "views/dns_views.xml",
+        "views/zone_views.xml",
+        "views/partner_views.xml",
+        "views/menu.xml",
+    ],
+    "application": True,
+    "installable": True,
+    'support': 'soporte@eligeunaweb.com',
+}
