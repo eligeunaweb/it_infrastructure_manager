@@ -18,12 +18,12 @@
                 <field name="record_type"/>
                 <field name="name"/>
                 <field name="value"/>
-                <filter string="Without server" name="no_server" domain="[('server_id','=',False)]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Customer" name="group_partner" context="{'group_by':'partner_id'}"/>
-                    <filter string="Zone" name="group_zone" context="{'group_by':'zone_id'}"/>
-                    <filter string="Type" name="group_type" context="{'group_by':'record_type'}"/>
-                    <filter string="Server" name="group_server" context="{'group_by':'server_id'}"/>
+                <filter string="Sin servidor" name="no_server" domain="[('server_id','=',False)]"/>
+                <group expand="0" string="Agrupar por">
+                    <filter string="Cliente" name="group_partner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Zona" name="group_zone" context="{'group_by':'zone_id'}"/>
+                    <filter string="Tipo" name="group_type" context="{'group_by':'record_type'}"/>
+                    <filter string="Servidor" name="group_server" context="{'group_by':'server_id'}"/>
                 </group>
             </search>
         </field>
@@ -51,8 +51,8 @@
         <field name="name">sysadmin.dns.record.form</field>
         <field name="model">sysadmin.dns.record</field>
         <field name="arch" type="xml">
-            <form class="euw_it_form">
-                <sheet class="euw_it_sheet">
+            <form>
+                <sheet>
                     <group>
                         <group>
                             <field name="partner_id"/>
@@ -64,14 +64,14 @@
                         </group>
                     </group>
 
-                    <group string="DNS Record">
+                    <group string="Registro">
                         <field name="name"/>
                         <field name="record_type"/>
                         <field name="value"/>
                         <field name="ttl"/>
                     </group>
 
-                    <group string="Optional">
+                    <group string="Opcional">
                         <field name="priority" attrs="{'invisible':[('record_type','not in',('MX','SRV'))]}"/>
                         <field name="weight" attrs="{'invisible':[('record_type','!=','SRV')]}"/>
                         <field name="port" attrs="{'invisible':[('record_type','!=','SRV')]}"/>

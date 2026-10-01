@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="action_sysadmin_server" model="ir.actions.act_window">
-        <field name="name">Servers</field>
+        <field name="name">Servidores</field>
         <field name="res_model">sysadmin.server</field>
         <field name="view_mode">tree,form,kanban</field>
         <field name="context">{}</field>
@@ -25,29 +25,21 @@
         <field name="name">sysadmin.server.form</field>
         <field name="model">sysadmin.server</field>
         <field name="arch" type="xml">
-            <form class="euw_it_form">
+            <form>
                 <header>
-                    <button name="action_activate" type="object" string="Activate" class="btn-primary" attrs="{'invisible':[('state','=','active')]}"/>
-                    <button name="action_deactivate" type="object" string="Deactivate" class="btn-secondary" attrs="{'invisible':[('state','=','inactive')]}"/>
+                    <button name="action_activate" type="object" string="Activar" class="btn-primary" attrs="{'invisible':[('state','=','active')]}"/>
+                    <button name="action_deactivate" type="object" string="Desactivar" class="btn-secondary" attrs="{'invisible':[('state','=','inactive')]}"/>
                     <field name="state" widget="statusbar" options="{'clickable': true}"/>
                 </header>
-                <sheet class="euw_it_sheet">
+                <sheet>
                         <field name="active" invisible="1"/>
-                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
-                    <div class="oe_title euw_it_title">
-                        <h1><field name="name" placeholder="e.g. srv-web-01"/></h1>
-                    </div>
-                    <div class="euw_it_hero">
-                        <div>
-                            <span class="euw_it_kicker">IT INFRASTRUCTURE</span>
-                            <h3>Server overview</h3>
-                            <p>Hardware, networking, DNS and ownership in one place.</p>
-                        </div>
-                        <span class="euw_it_theme_hint">Light / Dark follows Odoo</span>
+                    <widget name="web_ribbon" title="Archivado" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Ej: srv-web-01"/></h1>
                     </div>
 
                     <group>
-                        <group string="Customer">
+                        <group string="Cliente">
                             <field name="partner_id"/>
                             <field name="responsible_user_id"/>
                             <field name="location"/>
@@ -67,7 +59,7 @@
                     </group>
 
                     <notebook>
-                        <page string="Network Interfaces">
+                        <page string="Interfaces">
                             <field name="interface_ids" context="{'default_server_id': active_id}">
                                 <tree editable="bottom">
                                     <field name="name"/>
@@ -81,7 +73,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Server DNS">
+                        <page string="DNS (del servidor)">
                             <field name="dns_record_ids" context="{'default_server_id': active_id, 'default_partner_id': partner_id, 'default_zone_id': False}">
                                 <tree editable="bottom">
                                     <field name="zone_id"/>
@@ -96,8 +88,8 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Notes">
-                            <field name="description" placeholder="General information, credentials, observations…"/>
+                        <page string="Notas">
+                            <field name="description" placeholder="Información general, credenciales, observaciones…"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -138,72 +130,46 @@
         </field>
     </record>
 
-    <!-- Standalone Network Interfaces views. Interfaces remain editable inside Servers too. -->
     <record id="view_sysadmin_server_interface_tree" model="ir.ui.view">
         <field name="name">sysadmin.server.interface.tree</field>
         <field name="model">sysadmin.server.interface</field>
         <field name="arch" type="xml">
             <tree string="Network Interfaces">
-                <field name="server_id"/>
-                <field name="name"/>
-                <field name="dns_name"/>
-                <field name="mac"/>
-                <field name="ipv4"/>
-                <field name="ipv6" optional="hide"/>
-                <field name="connected_to"/>
-                <field name="port"/>
+                <field name="server_id"/><field name="name"/><field name="dns_name"/>
+                <field name="mac"/><field name="ipv4"/><field name="ipv6" optional="hide"/>
+                <field name="connected_to"/><field name="port"/>
             </tree>
         </field>
     </record>
-
     <record id="view_sysadmin_server_interface_form" model="ir.ui.view">
         <field name="name">sysadmin.server.interface.form</field>
         <field name="model">sysadmin.server.interface</field>
         <field name="arch" type="xml">
-            <form string="Network Interface" class="euw_it_form">
-                <sheet class="euw_it_sheet">
-                    <div class="oe_title">
-                        <h1><field name="name" placeholder="e.g. ens18"/></h1>
-                    </div>
+            <form string="Network Interface">
+                <sheet>
+                    <div class="oe_title"><h1><field name="name" placeholder="e.g. ens18"/></h1></div>
                     <group>
-                        <group string="Server">
-                            <field name="server_id"/>
-                            <field name="dns_name"/>
-                            <field name="mac"/>
-                        </group>
-                        <group string="Network">
-                            <field name="ipv4"/>
-                            <field name="ipv6"/>
-                            <field name="connected_to"/>
-                            <field name="port"/>
-                        </group>
+                        <group string="Server"><field name="server_id"/><field name="dns_name"/><field name="mac"/></group>
+                        <group string="Network"><field name="ipv4"/><field name="ipv6"/><field name="connected_to"/><field name="port"/></group>
                     </group>
-                    <group string="Notes">
-                        <field name="notes"/>
-                    </group>
+                    <group string="Notes"><field name="notes"/></group>
                 </sheet>
             </form>
         </field>
     </record>
-
     <record id="view_sysadmin_server_interface_search" model="ir.ui.view">
         <field name="name">sysadmin.server.interface.search</field>
         <field name="model">sysadmin.server.interface</field>
         <field name="arch" type="xml">
             <search string="Network Interfaces">
-                <field name="name"/>
-                <field name="server_id"/>
-                <field name="dns_name"/>
-                <field name="mac"/>
-                <field name="ipv4"/>
-                <field name="connected_to"/>
+                <field name="name"/><field name="server_id"/><field name="dns_name"/>
+                <field name="mac"/><field name="ipv4"/><field name="connected_to"/>
                 <group expand="0" string="Group By">
                     <filter string="Server" name="group_server" context="{'group_by': 'server_id'}"/>
                 </group>
             </search>
         </field>
     </record>
-
     <record id="action_sysadmin_server_interface" model="ir.actions.act_window">
         <field name="name">Network Interfaces</field>
         <field name="res_model">sysadmin.server.interface</field>

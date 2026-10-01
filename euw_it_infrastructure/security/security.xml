@@ -6,15 +6,14 @@
     </record>
 
     <record id="group_sysadmin_user" model="res.groups">
-        <field name="name">IT Infrastructure / User</field>
+        <field name="name">Sys Admin / Usuario</field>
         <field name="category_id" ref="module_category_sysadmin"/>
     </record>
 
     <record id="group_sysadmin_manager" model="res.groups">
-        <field name="name">IT Infrastructure / Administrator</field>
+        <field name="name">Sys Admin / Administrador</field>
         <field name="category_id" ref="module_category_sysadmin"/>
-    
-        <field name="implied_ids" eval="[(4, ref('group_sysadmin_user'))]"/></record>
+    </record>
 
     <!-- Reglas: los usuarios ven solo lo que tengan como responsable -->
     <record id="rule_server_own" model="ir.rule">
@@ -45,9 +44,6 @@
         <field name="groups" eval="[(4, ref('group_sysadmin_user'))]"/>
     </record>
 
-    <!-- Odoo administrators automatically administer IT Infrastructure.
-         This makes the application visible immediately after installation,
-         while normal internal users still require an explicit IT Infrastructure role. -->
     <record id="base.group_system" model="res.groups">
         <field name="implied_ids" eval="[(4, ref('euw_it_infrastructure.group_sysadmin_manager'))]"/>
     </record>
