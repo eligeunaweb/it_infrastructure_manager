@@ -1,0 +1,64 @@
+
+/* IT Infrastructure Manager — scoped backend polish (Odoo 16) */
+.euw_it_form .euw_it_sheet {
+    max-width: 1280px;
+}
+.euw_it_form .euw_it_title h1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+.euw_it_form .euw_it_hero {
+    margin: 4px 0 22px;
+    padding: 18px 22px;
+    border: 1px solid var(--border-color, #d8dadd);
+    border-radius: 12px;
+    background: var(--o-view-background-color, #fff);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+.euw_it_form .euw_it_hero h3 {
+    margin: 3px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+.euw_it_form .euw_it_hero p {
+    margin: 0;
+    opacity: .72;
+}
+.euw_it_form .euw_it_kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    opacity: .62;
+}
+.euw_it_form .euw_it_theme_hint {
+    white-space: nowrap;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color, #d8dadd);
+    border-radius: 999px;
+    font-size: 12px;
+    opacity: .72;
+}
+.euw_it_form .o_group {
+    margin-bottom: 16px;
+}
+.euw_it_form .o_group .o_group_col_6 {
+    padding: 12px 16px;
+}
+.euw_it_form .nav-tabs {
+    margin-top: 8px;
+}
+.euw_it_form .nav-tabs .nav-link {
+    font-weight: 600;
+}
+.euw_it_form .badge,
+.euw_it_form .o_field_badge {
+    border-radius: 999px;
+}
+@media (max-width: 768px) {
+    .euw_it_form .euw_it_hero { align-items: flex-start; flex-direction: column; }
+    .euw_it_form .euw_it_theme_hint { white-space: normal; }
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_sysadmin_dns_record" model="ir.actions.act_window">
+        <field name="name">DNS</field>
+        <field name="res_model">sysadmin.dns.record</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+    </record>
+    <record id="view_sysadmin_dns_search" model="ir.ui.view">
+        <field name="name">sysadmin.dns.record.search</field>
+        <field name="model">sysadmin.dns.record</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id" />
+                <field name="zone_id" />
+                <field name="server_id" />
+                <field name="record_type" />
+                <field name="name" />
+                <field name="value" />
+                <filter string="Without server" name="no_server" domain="[('server_id','=',False)]" />
+                <filter string="Customer" name="group_partner" context="{'group_by':'partner_id'}" />
+                <filter string="Zone" name="group_zone" context="{'group_by':'zone_id'}" />
+                <filter string="Type" name="group_type" context="{'group_by':'record_type'}" />
+                <filter string="Server" name="group_server" context="{'group_by':'server_id'}" />
+            </search>
+        </field>
+    </record>
+    <record id="view_sysadmin_dns_tree" model="ir.ui.view">
+        <field name="name">sysadmin.dns.record.tree</field>
+        <field name="model">sysadmin.dns.record</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="partner_id" />
+                <field name="zone_id" />
+                <field name="name" />
+                <field name="record_type" />
+                <field name="value" />
+                <field name="ttl" />
+                <field name="priority" optional="hide" />
+                <field name="server_id" optional="hide" />
+                <field name="responsible_user_id" optional="hide" />
+            </list>
+        </field>
+    </record>
+    <record id="view_sysadmin_dns_form" model="ir.ui.view">
+        <field name="name">sysadmin.dns.record.form</field>
+        <field name="model">sysadmin.dns.record</field>
+        <field name="arch" type="xml">
+            <form class="euw_it_form">
+                <sheet class="euw_it_sheet">
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="zone_id" options="{'no_create_edit': False}" />
+                        </group>
+                        <group>
+                            <field name="server_id" />
+                            <field name="responsible_user_id" />
+                        </group>
+                    </group>
+                    <group string="DNS Record">
+                        <field name="name" />
+                        <field name="record_type" />
+                        <field name="value" />
+                        <field name="ttl" />
+                    </group>
+                    <group string="Optional">
+                        <field name="priority" invisible="record_type not in ('MX', 'SRV')" />
+                        <field name="weight" invisible="record_type != 'SRV'" />
+                        <field name="port" invisible="record_type != 'SRV'" />
+                        <field name="comment" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

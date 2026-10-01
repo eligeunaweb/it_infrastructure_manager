@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_sysadmin_root" name="IT Infrastructure" sequence="10" groups="euw_it_infrastructure.group_sysadmin_user,euw_it_infrastructure.group_sysadmin_manager" web_icon="euw_it_infrastructure,static/description/icon.png"/>
+    <menuitem id="menu_sysadmin_servers" name="Servers" parent="menu_sysadmin_root" sequence="10" action="action_sysadmin_server"/>
+    <menuitem id="menu_sysadmin_interfaces" name="Network Interfaces" parent="menu_sysadmin_root" sequence="12" action="action_sysadmin_server_interface" groups="euw_it_infrastructure.group_sysadmin_user,euw_it_infrastructure.group_sysadmin_manager"/>
+    <menuitem id="menu_sysadmin_dns" name="DNS" parent="menu_sysadmin_root" sequence="20" action="action_sysadmin_dns_record"/>
+    <menuitem id="menu_sysadmin_zones" name="DNS Zones" parent="menu_sysadmin_root" sequence="15" action="action_sysadmin_dns_zone"/>
+</odoo>
