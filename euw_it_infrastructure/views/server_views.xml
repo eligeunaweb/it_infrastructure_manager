@@ -42,7 +42,7 @@
                             <span class="euw_it_kicker">IT INFRASTRUCTURE</span>
                             <h3>Server overview</h3>
                             <p>Hardware, networking, DNS and ownership in one place.</p>
-                        </div>
+                        </div>                        
                     </div>
 
                     <group>
@@ -190,7 +190,9 @@
                 <field name="mac"/>
                 <field name="ipv4"/>
                 <field name="connected_to"/>
-                <filter string="Server" name="group_server" context="{'group_by': 'server_id'}"/>
+                <group expand="0" string="Group By">
+                    <filter string="Server" name="group_server" context="{'group_by': 'server_id'}"/>
+                </group>
             </search>
         </field>
     </record>

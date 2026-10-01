@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "IT Infrastructure Manager",
-    "version": "19.0.1.0.4",
+    "version": "18.0.1.0.3",
     "summary": "Manage servers, network interfaces and DNS infrastructure by customer",
     "category": "Services/IT",
     "author": "Álvaro Martínez",
