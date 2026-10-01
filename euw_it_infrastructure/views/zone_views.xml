@@ -39,7 +39,7 @@
 
                     <notebook>
                         <page string="DNS Records">
-                            <field name="record_ids" context="{'default_zone_id': id, 'default_partner_id': partner_id}">
+                            <field name="record_ids" context="{'default_zone_id': active_id, 'default_partner_id': partner_id}">
                                 <tree editable="bottom">
                                     <field name="name"/>
                                     <field name="record_type"/>

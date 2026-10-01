@@ -72,9 +72,9 @@
                     </group>
 
                     <group string="Optional">
-                        <field name="priority" invisible="record_type not in ('MX', 'SRV')"/>
-                        <field name="weight" invisible="record_type != 'SRV'"/>
-                        <field name="port" invisible="record_type != 'SRV'"/>
+                        <field name="priority" attrs="{'invisible':[('record_type','not in',('MX','SRV'))]}"/>
+                        <field name="weight" attrs="{'invisible':[('record_type','!=','SRV')]}"/>
+                        <field name="port" attrs="{'invisible':[('record_type','!=','SRV')]}"/>
                         <field name="comment"/>
                     </group>
                 </sheet>
