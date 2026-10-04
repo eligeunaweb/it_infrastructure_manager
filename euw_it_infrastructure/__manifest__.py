@@ -7,6 +7,8 @@
     "author": 'Álvaro Martínez',
     "website": 'https://eligeunaweb.es',
     "license": 'LGPL-3',
+    "price": 19.90,
+    "currency": "EUR",
     "depends": ["contacts", "mail"],
     "data": [
         "security/security.xml",
